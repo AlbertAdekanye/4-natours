@@ -4,7 +4,7 @@ const tourController = require('./../controllers/tourController');
 // const { getAllTours, getTour, createTour, updateTour, deleteTour } = tourController;
 const router = express.Router();
 
-router.param('id', tourController.checkID);
+// router.param('id', tourController.checkID);
 
 router
   .route('/')
