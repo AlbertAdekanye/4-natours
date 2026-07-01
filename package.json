@@ -1,0 +1,44 @@
+{
+  "name": "natours-1",
+  "version": "1.0.0",
+  "description": "build with node, express and mongoDB",
+  "homepage": "https://github.com/AlbertAdekanye/4-natours#readme",
+  "bugs": {
+    "url": "https://github.com/AlbertAdekanye/4-natours/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertAdekanye/4-natours.git"
+  },
+  "license": "ISC",
+  "author": "Albert Adekanye",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod": "set NODE_ENV=production&& nodemon server.js",
+    "debug": "ndb server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "mongoose": "^5.13.23",
+    "morgan": "^1.11.0",
+    "slugify": "^1.6.9",
+    "validator": "^13.15.35"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-react": "^7.37.5",
+    "prettier": "^3.8.4"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
