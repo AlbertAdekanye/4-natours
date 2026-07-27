@@ -170,3 +170,9 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   // 3) Update changedPasswordAt property for user
 
   // 4) Log the user in, send JWT
+
+});
+
+exports.password = catchAsync(async (req, res, next) => {
+  
+})
