@@ -20,14 +20,29 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// GLOBAL MIDDLEWARES
+// Public static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(helmet());
+// Leaflet static files
+app.use(
+  '/leaflet',
+  express.static(path.join(__dirname, 'node_modules/leaflet/dist'))
+);
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: [
+        "'self'",
+        'data:',
+        'https://*.tile.openstreetmap.org',
+      ],
+    },
+  })
+);
 
 const limiter = rateLimit({
   max: 100,
