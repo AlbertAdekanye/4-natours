@@ -11992,7 +11992,7 @@ var logout = exports.logout = /*#__PURE__*/function () {
         case 1:
           res = _context2.v;
           if (res.data.status === 'success') {
-            location.reload(true);
+            location.assign('/');
           }
           _context2.n = 3;
           break;
@@ -12146,7 +12146,7 @@ var _map = require("./map");
 var _login = require("./login");
 // DOM elements
 var mapEl = document.getElementById('map');
-var loginForm = document.querySelector('.form');
+var loginForm = document.querySelector('.form--login');
 var logOutBtn = document.querySelector('.nav__el--logout');
 
 // MAP
