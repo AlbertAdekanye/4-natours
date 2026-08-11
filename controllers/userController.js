@@ -44,9 +44,6 @@ exports.getMe = (req, res, next) => {
 };;
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
-
   // 1) create an error if user post password data
   if (req.body.password || req.body.passwordConfirm) {
     return next(new AppError(
@@ -58,6 +55,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 
   // 2) filtered out unwanted names
   const filteredBody = filterObj(req.body, 'name', 'email');
+  if (req.file) filteredBody.photo = req.file.filename;
 
   // 2) update user documents
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
