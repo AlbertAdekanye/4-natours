@@ -13,7 +13,13 @@ module.exports = class Email {
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       // SendGrid
-      return 1;
+      return nodemailer.createTransport({
+        service: 'brevo',
+        auth: {
+          user: process.env.BREVO_USERNAME,
+          pass: process.env.BREVO_PASSWORD,
+        }
+      })
     }
 
     return nodemailer.createTransport({
