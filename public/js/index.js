@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import { displayMap } from './map';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
+import { bookTour } from './paystack';
 
 // DOM elements
 const mapEl = document.getElementById('map');
@@ -9,7 +10,7 @@ const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
-
+const bookBtn = document.getElementById('book-tour');
 
 // MAP
 if (mapEl) {
@@ -57,3 +58,23 @@ if (userPasswordForm)
     document.getElementById('password').value = '';
     document.getElementById('password-confirm').value = ''; 
   })
+
+
+if (bookBtn) {
+  bookBtn.addEventListener('click', e => {
+    e.preventDefault();
+
+    const tourId = e.currentTarget.dataset.tourId;
+
+    console.log('TOUR ID:', tourId);
+
+    if (!tourId) {
+      console.error('Tour ID is missing from the button');
+      return;
+    }
+
+    e.currentTarget.textContent = 'Processing...';
+
+    bookTour(tourId);
+  });
+}
